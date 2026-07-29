@@ -15,14 +15,18 @@ function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ CONNECTED TO BACKEND
   const sendEmail = async (e) => {
     e.preventDefault();
     setLoading(true);
     setSuccess(false);
 
+    // Local: Express backend. Production (Vercel): /api/send-email serverless function.
+    const endpoint = import.meta.env.DEV
+      ? "http://localhost:8000/send-email"
+      : "/api/send-email";
+
     try {
-      const res = await fetch("http://localhost:8000/send-email", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
