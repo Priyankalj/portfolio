@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
+// Free key from https://web3forms.com — paste yours below (safe to use in frontend)
+const WEB3FORMS_ACCESS_KEY = "18a378a7-539c-48ee-a3d6-957665219e2a";
+
 function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -20,18 +23,27 @@ function Contact() {
     setLoading(true);
     setSuccess(false);
 
-    // Local: Express backend. Production (Vercel): /api/send-email serverless function.
-    const endpoint = import.meta.env.DEV
-      ? "http://localhost:8000/send-email"
-      : "/api/send-email";
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE") {
+      alert("Contact form is not configured yet. Add your Web3Forms access key.");
+      setLoading(false);
+      return;
+    }
 
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Accept: "application/json"
         },
-        body: JSON.stringify(form)
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New portfolio message from ${form.name}`,
+          from_name: "Portfolio Contact",
+          name: form.name,
+          email: form.email,
+          message: form.message
+        })
       });
 
       const data = await res.json();
@@ -40,7 +52,7 @@ function Contact() {
         setSuccess(true);
         setForm({ name: "", email: "", message: "" });
       } else {
-        alert("Failed to send message");
+        alert(data.message || "Failed to send message");
       }
     } catch (error) {
       console.log(error);
@@ -104,6 +116,15 @@ function Contact() {
           onSubmit={sendEmail}
           className="border border-gray-800 rounded-2xl p-8 bg-[#0b0f1a]"
         >
+          {/* Honeypot — leave empty; hides from real users */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            className="hidden"
+            style={{ display: "none" }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
           
           <input
             type="text"
@@ -143,7 +164,6 @@ function Contact() {
             {loading ? "Sending..." : "Send Message"}
           </motion.button>
 
-          {/* ✅ Better success animation */}
           {success && (
             <motion.p
               initial={{ opacity: 0, y: 10 }}
