@@ -25,12 +25,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--color-ink);
-  background-color: var(--color-page);
-  background-image:
-    radial-gradient(ellipse 70% 50% at 88% 10%, rgba(15, 118, 110, 0.1), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 8% 85%, rgba(15, 118, 110, 0.06), transparent 50%),
-    linear-gradient(160deg, #fbfcfb 0%, #f3f8f6 50%, #eaf3f0 100%);
-  background-attachment: fixed;
+  background-color: #f7faf9;
   min-height: 100vh;
 }
 
