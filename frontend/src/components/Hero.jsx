@@ -1,153 +1,215 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { SiPostgresql, SiTailwindcss } from "react-icons/si";
 import { HiOutlineMail } from "react-icons/hi";
-import { FaLinkedinIn } from "react-icons/fa";
 import { ArrowRight, Download } from "lucide-react";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+const techLogos = [
+  { name: "React", Icon: FaReact },
+  { name: "JavaScript", Icon: FaJs },
+  { name: "Node.js", Icon: FaNodeJs },
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+];
+
 function Hero() {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
   return (
-    <section className="px-6 md:px-16 pt-10 md:pt-20 pb-20">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative px-6 md:px-16 pt-4 md:pt-8 pb-10 md:pb-14 flex flex-col justify-center">
+      <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-8 md:gap-12 items-center">
         <div>
-          <motion.span
-            className="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-full text-sm font-medium"
+          <motion.p
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.1 }}
+            className="inline-flex items-center gap-2 rounded-full bg-accent-soft text-accent px-4 py-1.5 text-sm font-medium"
           >
-            React Native Developer
-          </motion.span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent-bright" />
+            Software Engineer · Sunnyvale, CA
+          </motion.p>
 
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mt-6 leading-tight 
-  bg-gradient-to-r from-white to-[rgba(209,158,255,1)] 
-  bg-clip-text text-transparent"
+            custom={1}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.2 }}
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold mt-6 leading-[0.95] tracking-tight text-ink"
           >
-            Hi, I'm Priyanka
+            Priyanka
+            <span className="block italic font-medium text-accent">L J</span>
           </motion.h1>
-          <motion.h2
-            className="text-gray-300 text-xl mt-4 font-medium"
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.3 }}
-          >
-            Building scalable mobile apps that power fintech innovation
-          </motion.h2>
 
           <motion.p
-            className="text-gray-400 mt-6 max-w-xl font-normal"
+            custom={2}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.4 }}
+            className="mt-6 text-lg md:text-xl text-muted max-w-lg leading-relaxed"
           >
-            With 3.4 years of experience crafting high-performance React Native
-            applications for fintech products, I specialize in building scalable
-            mobile solutions that handle thousands of users with seamless
-            performance.
+            Building scalable React Native apps and full-stack systems for
+            fintech — clean, fast, and production-ready.
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap gap-4 mt-8"
+            custom={3}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.5 }}
+            className="flex flex-wrap gap-3 mt-9"
           >
-            {/* View Projects */}
             <a
               href="#projects"
-              className="bg-gradient-to-r from-[rgba(146,31,250,1)] to-[rgba(43,90,251,1)] px-6 py-3 rounded-lg font-normal transition hover:opacity-90 flex items-center"
+              className="inline-flex items-center gap-2 rounded-full bg-accent text-white px-6 py-3 font-medium hover:bg-accent-bright transition"
             >
               View Projects
-              <ArrowRight size={16} className="ml-2.5" />
+              <ArrowRight size={16} />
             </a>
-
-            {/* Resume */}
             <a
-    href="/priyanka_lj_resume.pdf"
-  download
-  className="border border-gray-600 px-6 py-3 rounded-lg hover:bg-gray-800 font-normal transition flex items-center"
->
-  <Download className="mr-2" size={16} />
-  Download Resume
-</a>
-            {/* Contact */}
-            <a
-              href="#contact"
-              className="border border-gray-600 px-6 py-3 rounded-lg hover:bg-gray-800 font-normal transition flex items-center"
+              href="/Priyanka_LJ_Fullstack.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 backdrop-blur px-6 py-3 font-medium text-ink hover:bg-accent-soft transition"
             >
-              Contact Me
+              <Download size={16} />
+              Download Resume
             </a>
           </motion.div>
+
           <motion.div
-            className="flex gap-4 mt-8"
+            custom={4}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            transition={{ delay: 0.6 }}
+            className="flex items-center gap-5 mt-10 text-sm text-muted"
           >
-            <a
-              href="https://www.linkedin.com/in/priyankalj/"
-              target="_blank"
-              className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-600 transition"
-            >
-              <FaLinkedin size={18} />
-            </a>
-            <a
-              href="https://github.com/Priyankalj?tab=repositories"
-              target="_blank"
-              className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-600 transition"
-            >
-              <FaGithub size={18} />
-            </a>
-            <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=ljpriyanka7@gmail.com&su=Portfolio%20Inquiry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-purple-600 transition"
-            >
-              <HiOutlineMail size={18} />
-            </a>
+            <div className="flex gap-3">
+              <a
+                href="https://www.linkedin.com/in/priyankalj/"
+                target="_blank"
+                rel="noreferrer"
+                className="h-10 w-10 rounded-full border border-line bg-surface flex items-center justify-center text-ink hover:border-accent hover:text-accent transition"
+              >
+                <FaLinkedin size={16} />
+              </a>
+              <a
+                href="https://github.com/Priyankalj?tab=repositories"
+                target="_blank"
+                rel="noreferrer"
+                className="h-10 w-10 rounded-full border border-line bg-surface flex items-center justify-center text-ink hover:border-accent hover:text-accent transition"
+              >
+                <FaGithub size={16} />
+              </a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=ljpriyanka7@gmail.com&su=Portfolio%20Inquiry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full border border-line bg-surface flex items-center justify-center text-ink hover:border-accent hover:text-accent transition"
+              >
+                <HiOutlineMail size={16} />
+              </a>
+            </div>
+            <span className="hidden sm:block h-8 w-px bg-line" />
+            <p className="hidden sm:block">
+              <span className="font-semibold text-ink">4 years</span> shipping
+              fintech products
+            </p>
           </motion.div>
         </div>
 
-        <div className="relative">
-  {/* Experience Badge */}
-  <motion.div
-    className="absolute top-4 right-4 bg-purple-600 px-4 py-3 rounded-xl text-center z-10"
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ delay: 0.7, type: "spring", stiffness: 120 }}
-  >
-    <p className="text-lg font-bold">3.4</p>
-    <p className="text-xs font-medium">Years Exp</p>
-  </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.2 }}
+          className="hidden md:block"
+        >
+          <div className="rounded-[2rem] border border-line bg-surface p-8 lg:p-9 shadow-[0_24px_60px_rgba(20,32,28,0.06)]">
+            <div className="flex items-end justify-between gap-4 mb-8">
+              <div>
+                <p className="font-display text-5xl font-semibold text-accent leading-none">
+                  4
+                </p>
+                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-muted">
+                  Years experience
+                </p>
+              </div>
+              <p className="text-sm text-muted text-right max-w-[9rem] leading-snug">
+                Core stack I ship with every day
+              </p>
+            </div>
 
-  {/* Image */}
-  <motion.img
-  src="https://images.unsplash.com/photo-1753715613434-9c7cb58876b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjB3b3Jrc3BhY2UlMjBkZXNrJTIwY29kaW5nfGVufDF8fHx8MTc3MzI1MDczMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  alt="Developer Workspace"
-  className="rounded-3xl w-full h-[320px] object-cover shadow-2xl"
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ delay: 0.5, duration: 0.6 }}
-/>
+            <div className="grid grid-cols-3 gap-3">
+              {techLogos.slice(0, 3).map(({ name, Icon }, i) => (
+                <motion.div
+                  key={name}
+                  title={name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.28 + i * 0.06 }}
+                  whileHover={{ y: -3 }}
+                  className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-line bg-page-soft/80 px-3 py-5 transition hover:border-accent hover:bg-accent-soft"
+                >
+                  <Icon className="text-[1.75rem] text-accent" aria-label={name} />
+                  <span className="text-[11px] font-medium text-muted">{name}</span>
+                </motion.div>
+              ))}
+            </div>
 
-  {/* Glow */}
-  <div className="absolute inset-0 bg-purple-500/20 blur-3xl -z-10"></div>
-</div>
+            <div className="mt-3 grid grid-cols-2 gap-3 max-w-[70%] mx-auto">
+              {techLogos.slice(3).map(({ name, Icon }, i) => (
+                <motion.div
+                  key={name}
+                  title={name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.48 + i * 0.06 }}
+                  whileHover={{ y: -3 }}
+                  className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-line bg-page-soft/80 px-3 py-5 transition hover:border-accent hover:bg-accent-soft"
+                >
+                  <Icon className="text-[1.75rem] text-accent" aria-label={name} />
+                  <span className="text-[11px] font-medium text-muted text-center leading-tight">
+                    {name}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55, duration: 0.5 }}
+        className="mt-8 md:mt-10 flex flex-wrap items-center gap-6 md:gap-10 text-sm text-muted border-t border-line/80 pt-6"
+      >
+        <span className="flex items-center gap-2">
+          <span className="text-accent">◆</span> React Native
+        </span>
+        <span className="hidden sm:block h-4 w-px bg-line" />
+        <span className="flex items-center gap-2">
+          <span className="text-accent">◆</span> Express & PostgreSQL
+        </span>
+        <span className="hidden sm:block h-4 w-px bg-line" />
+        <a
+          href="https://app.floatr.in/"
+          target="_blank"
+          rel="noreferrer"
+          className="group flex items-center gap-2 hover:text-accent transition"
+        >
+          <span className="text-accent">◆</span>
+          <span className="group-hover:underline underline-offset-4">
+            Floatr · App Store & Play
+          </span>
+        </a>
+      </motion.div>
     </section>
   );
 }

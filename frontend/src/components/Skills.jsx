@@ -1,228 +1,101 @@
 import { motion } from "framer-motion";
 
-const cardVariant = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 }
-};
+const cards = [
+  {
+    title: "Frontend",
+    items: [
+      "React Native",
+      "React.js",
+      "JavaScript",
+      "Redux",
+      "Context API",
+      "React Navigation",
+      "Tailwind CSS",
+      "HTML",
+      "CSS",
+    ],
+  },
+  {
+    title: "Backend & APIs",
+    items: ["Node.js", "Express.js", "REST APIs", "JWT Authentication"],
+  },
+  {
+    title: "Database",
+    items: ["PostgreSQL", "MySQL"],
+  },
+  {
+    title: "Cloud & Services",
+    items: [
+      "Firebase Push Notifications",
+      "Firebase Crashlytics",
+      "Firebase Analytics",
+      "OTA Updates",
+    ],
+  },
+  {
+    title: "Performance",
+    items: [
+      "React Native Reanimated",
+      "React Native Skia",
+      "Performance Optimization",
+    ],
+  },
+  {
+    title: "Tools",
+    items: ["Git", "GitHub", "Bitbucket", "VSCode", "Jira", "Postman", "CI/CD"],
+  },
+];
 
 function Skills() {
   return (
-    <section
-      id="skills"
-      className="px-6 md:px-16 py-24"
-    >
-      {/* Title */}
-      <div className="text-center mb-16">
-
+    <section id="skills" className="px-6 md:px-16 py-14 md:py-16 bg-page-soft/40">
+      <div className="text-center mb-8 md:mb-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-purple-400"
+          className="font-display text-4xl md:text-5xl font-semibold text-ink"
         >
           Skills & Technologies
         </motion.h2>
-
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.15 }}
           viewport={{ once: true }}
-          className="text-gray-400 mt-4"
+          className="text-muted mt-4"
         >
-          A comprehensive toolkit for building modern mobile and web applications
+          A focused toolkit for modern mobile and web products
         </motion.p>
-
       </div>
-      <div className="grid md:grid-cols-3 gap-8">
 
-       <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-          <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-pink-500 rounded-full"></span>
-            Frontend (Mobile & Web)
-          </h3>
-
-          <div className="grid grid-cols-3 gap-4 text-gray-300 text-sm">
-            <p>React Native</p>
-            <p>React.js</p>
-            <p>JavaScript</p>
-            <p>Redux</p>
-            <p>Context API</p>
-            <p>React Navigation</p>
-            <p>Tailwind CSS</p>
-            <p>HTML</p>
-            <p>CSS</p>
-          </div>
-        </motion.div>
-
-        {/* Backend */}
-
- <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-         <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
-            Backend & APIs
-          </h3>
-
-          <div className="grid grid-cols-2 gap-4 text-gray-400 text-sm">
-            <p>Node.js</p>
-            <p>Express.js</p>
-            <p>REST APIs</p>
-            <p>JWT Authentication</p>
-          </div>
-        </motion.div>
-
-        {/* Database */}
-
-       <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-        <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-            Database
-          </h3>
-
-          <div className="grid grid-cols-2 gap-4 text-gray-400 text-sm">
-            <p>PostgreSQL</p>
-            <p>MySQL</p>
-          </div>
-
-        </motion.div>
-
-        {/* Cloud */}
-
-   <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-          <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-orange-400 rounded-full"></span>
-            Cloud & Services
-          </h3>
-
-          <div className="grid grid-cols-2 gap-4 text-gray-400 text-sm">
-            <p>Firebase Push Notifications</p>
-            <p>Firebase Crashlytics</p>
-            <p>Firebase Analytics</p>
-            <p>OTA Updates</p>
-          </div>
-
-        </motion.div>
-
-        {/* Animations */}
-
-        <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-          <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
-            Animations & Performance
-          </h3>
-
-          <div className="grid grid-cols-2 gap-4 text-gray-400 text-sm">
-            <p>React Native Reanimated</p>
-            <p>React Native Skia</p>
-            <p>Performance Optimization</p>
-          </div>
-
-        </motion.div>
-
-        {/* Tools */}
-
+      <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+        {cards.map((card, i) => (
           <motion.div
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="visible"
-  whileHover={{
-    y: -8,
-    boxShadow: "0px 20px 20px rgba(124, 58, 237, 0.15)"
-  }}
-  transition={{ type: "spring", stiffness: 300 }}
-  viewport={{ once: true }}
-  className="group border border-gray-800 rounded-2xl p-8 bg-black/40 backdrop-blur-md transition"
->
-
-          <div className="absolute inset-0 bg-purple-600/10 blur-xl opacity-0  transition"></div>
-
-          <h3 className="text-lg font-semibold mb-6 flex items-center gap-2">
-            <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
-            Tools
-          </h3>
-
-          <div className="grid grid-cols-3 gap-4 text-gray-400 text-sm">
-            <p>Git</p>
-            <p>GitHub</p>
-            <p>Bitbucket</p>
-            <p>VSCode</p>
-            <p>Jira</p>
-            <p>Postman</p>
-            <p>CI/CD</p>
-          </div>
-
-        </motion.div>
-
+            key={card.title}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6 }}
+            transition={{ duration: 0.45, delay: i * 0.05 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-line bg-surface p-7 shadow-sm hover:shadow-[0_18px_40px_rgba(28,46,36,0.08)] transition"
+          >
+            <h3 className="font-display text-2xl font-semibold text-ink mb-5">
+              {card.title}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {card.items.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full bg-accent-soft text-accent px-3 py-1.5 text-xs font-medium"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

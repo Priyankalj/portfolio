@@ -2,78 +2,51 @@ import { motion } from "framer-motion";
 
 function Education() {
   return (
-    <section className="px-6 md:px-16 py-32">
-      
-      {/* Title */}
+    <section className="px-6 md:px-16 py-14 md:py-16">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        transition={{ duration: 0.55 }}
+        className="text-center mb-8 md:mb-10"
       >
-        <h2 className="text-5xl font-bold text-purple-400">
+        <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
           Education
         </h2>
-        <p className="text-gray-400 mt-4">
+        <p className="text-muted mt-4">
           Academic foundation in engineering and technology
         </p>
       </motion.div>
 
-      {/* Card */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.55 }}
         viewport={{ once: true }}
-        whileHover={{
-          y: -4,
-          boxShadow: "0px 20px 30px rgba(0,0,0,0.4)"
-        }}
-        className="max-w-4xl mx-auto border border-gray-800 rounded-2xl p-8 md:p-10 bg-[#0b0f1a]"
+        whileHover={{ y: -4 }}
+        className="max-w-3xl mx-auto rounded-3xl border border-line bg-surface p-8 md:p-10 shadow-sm"
       >
-
-        {/* Top Section */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-          
-          {/* Left */}
-          <div className="flex items-center gap-4">
-            
-            {/* Icon (ONLY gradient here) */}
-            <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl">
-              🎓
-            </div>
-
-            <div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white">
-                Bachelor of Engineering
-              </h3>
-
-              <p className="text-purple-400 text-sm">
-                Electronics & Telecommunication
-              </p>
-
-              <p className="text-gray-500 text-sm mt-1">
-                Sir M Visvesvaraya Institute of Technology
-              </p>
-            </div>
-          </div>
-
-          {/* Right */}
-          <div className="mt-4 md:mt-0 text-right">
-            <p className="text-yellow-400 font-medium">
-              CGPA: 8.0
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-5">
+          <div>
+            <h3 className="font-display text-2xl md:text-3xl font-semibold text-ink">
+              Bachelor of Engineering
+            </h3>
+            <p className="text-accent font-medium mt-1">
+              Electronics & Telecommunication
+            </p>
+            <p className="text-muted text-sm mt-2">
+              Sir M Visvesvaraya Institute of Technology · 2018–2022
             </p>
           </div>
+          <p className="text-ink font-semibold rounded-full bg-accent-soft px-4 py-2 text-sm self-start">
+            CGPA 8.0 / 10
+          </p>
         </div>
 
-        {/* Description */}
-        <p className="text-gray-300 text-sm leading-relaxed">
-          Built a strong foundation in electronics, telecommunication systems,
-          and computer science fundamentals. Developed problem-solving skills
-          and technical expertise that translated seamlessly into software
-          development, particularly in building performant mobile applications.
+        <p className="text-muted text-sm leading-relaxed">
+          Built a strong foundation in electronics, systems, and computer science
+          fundamentals — skills that now shape how I design performant mobile
+          and full-stack software.
         </p>
-
       </motion.div>
     </section>
   );

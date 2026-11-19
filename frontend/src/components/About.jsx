@@ -6,25 +6,40 @@ import {
   Zap,
 } from "lucide-react";
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+const features = [
+  {
+    icon: Smartphone,
+    title: "Mobile First",
+    desc: "Specialized in React Native development",
+  },
+  {
+    icon: ChevronsLeftRightEllipsis,
+    title: "Full Stack",
+    desc: "Backend expertise with Node.js & PostgreSQL",
+  },
+  {
+    icon: Database,
+    title: "Fintech Focus",
+    desc: "Building secure financial applications",
+  },
+  {
+    icon: Zap,
+    title: "Performance",
+    desc: "Optimizing for scale and speed",
+  },
+];
+
 function About() {
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const boxHover = {
-    whileHover: {
-      scale: 1.05,
-      backgroundColor: "rgba(40,40,40,0.9)",
-    },
-  };
-
   return (
-    <section id="about" className="px-6 md:px-16 py-24 bg-[#0a0a0a]">
-      {/* Title */}
-      <div className="text-center mb-16">
+    <section id="about" className="px-6 md:px-16 py-14 md:py-16">
+      <div className="text-center mb-8 md:mb-10">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-purple-400"
+          className="font-display text-4xl md:text-5xl font-semibold text-ink"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -32,119 +47,63 @@ function About() {
         >
           About Me
         </motion.h2>
-
         <motion.p
-          className="text-gray-400 mt-4"
+          className="text-muted mt-4 max-w-xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          Passionate developer with a track record of building high-performance
-          mobile applications
+          Passionate about shipping high-performance mobile products that people
+          actually use.
         </motion.p>
       </div>
 
-      {/* Content Grid */}
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Left Card */}
+      <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
         <motion.div
-          className="border border-gray-800 rounded-xl p-8 text-gray-300 leading-relaxed"
+          className="rounded-[1.75rem] border border-line bg-surface/80 backdrop-blur p-8 md:p-10 leading-relaxed text-muted shadow-[0_20px_50px_rgba(28,46,36,0.05)]"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <p className="mb-6 text-gray-300 font-normal">
-            I'm a{" "}
-            <span className="text-purple-400 font-semibold">
-              React Native Developer
-            </span>{" "}
-            with
-            <span className="text-blue-400 font-semibold">
-              {" "}
-              3.4 years of experience{" "}
-            </span>
+          <p className="mb-5">
+            I&apos;m a{" "}
+            <span className="text-accent font-semibold">Software Engineer</span>{" "}
+            with{" "}
+            <span className="text-ink font-semibold">4 years of experience</span>{" "}
             building high-performance mobile applications, specializing in
             fintech product development.
           </p>
-
-          <p className="mb-6 text-gray-300 font-normal">
-            My expertise spans the full mobile development stack — from crafting
-            pixel-perfect UIs with React Native to architecting scalable
-            backends with Node.js and PostgreSQL. I focus on building secure,
-            performant solutions that handle real-world complexity.
+          <p className="mb-5">
+            My work spans the full stack — pixel-perfect React Native UIs to
+            scalable Node.js and PostgreSQL backends — with a focus on secure,
+            performant systems.
           </p>
-
-          <p className=" text-gray-300 font-normal">
-            At Floatr, I've contributed to a fintech platform serving thousands
-            of users, implementing features like payment gateway integrations,
-            KYC workflows, and investment systems while reducing production
-            issues by 40% through optimization and best practices.
+          <p>
+            At Floatr, I&apos;ve shipped features for thousands of users:
+            payments, KYC, and investment flows, while cutting recurring
+            production issues through careful optimization.
           </p>
         </motion.div>
 
-        {/* Right Feature Boxes */}
-        <div className="grid sm:grid-cols-2 gap-6">
-          <motion.div
-            className="bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer transition"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            whileHover={{ scale: 1.05, borderColor: "#a978d6" }}
-          >
-            <Smartphone className="text-purple-500 mb-1" />
-            <h3 className="font-semibold text-lg mb-2"> Mobile First</h3>
-            <p className="text-gray-400 text-sm">
-              Specialized in React Native development
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer transition"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            whileHover={{ scale: 1.05, borderColor: "#a855f7" }}
-          >
-            <ChevronsLeftRightEllipsis className="text-purple-500 mb-1" />
-            <h3 className="font-semibold text-lg mb-2">Full Stack</h3>
-            <p className="text-gray-400 text-sm">
-              Backend expertise with Node.js & PostgreSQL
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer transition"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            whileHover={{ scale: 1.05, borderColor: "#a855f7" }}
-          >
-            <Database className="text-purple-500 mb-1" />
-            <h3 className="font-semibold text-lg mb-2">Fintech Focus</h3>
-            <p className="text-gray-400 text-sm">
-              Building secure financial applications
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="bg-gray-900 p-6 rounded-xl border border-gray-800 cursor-pointer transition"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            whileHover={{ scale: 1.05, borderColor: "#a855f7" }}
-          >
-            <Zap className="text-purple-500 mb-1" />
-            <h3 className="font-semibold text-lg mb-2">Performance</h3>
-            <p className="text-gray-400 text-sm">
-              Optimizing for scale and speed
-            </p>
-          </motion.div>
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
+          {features.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              className="rounded-3xl border border-line bg-surface p-6 shadow-sm hover:shadow-[0_16px_40px_rgba(28,46,36,0.08)] hover:-translate-y-1 transition duration-300"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+            >
+              <div className="h-10 w-10 rounded-2xl bg-accent-soft text-accent flex items-center justify-center mb-3">
+                <Icon size={18} />
+              </div>
+              <h3 className="font-semibold text-ink text-lg mb-1">{title}</h3>
+              <p className="text-muted text-sm">{desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

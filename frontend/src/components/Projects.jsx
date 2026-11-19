@@ -2,123 +2,107 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "Artsy",
+    desc: "Two-sided artist booking app. Customers request a booking, and artists set weekly hours, complete KYC, and get paid through Razorpay.",
+    tech: ["React Native", "Node.js", "Express", "PostgreSQL", "Firebase"],
+    link: "https://github.com/Priyankalj/artsy",
+    linkLabel: "View code",
+  },
+  {
+    title: "Prasidhi Foods",
+    desc: "Website for a Bengaluru homemade health-food brand, with a product catalog and WhatsApp ordering.",
+    tech: ["React", "Vite", "CSS"],
+    link: "https://prasidhi-foods.vercel.app",
+    linkLabel: "Live site",
+  },
+  {
+    title: "Costume Store",
+    desc: "Costume rental site with a shop catalog, school bulk bookings, makeup packages, and WhatsApp enquiries.",
+    tech: ["React", "Vite", "CSS"],
+    link: "https://fancydress-costumes.vercel.app",
+    linkLabel: "Live site",
+  },
+  {
     title: "SkillGig",
     desc: "Personalized learning platform with roadmaps, quizzes, streaks, and gamified leaderboard system.",
     tech: ["React Native", "Node.js", "PostgreSQL", "Firebase", "Redux"],
-    color: "from-pink-500 to-purple-500"
-  },
-  {
-    title: "Expense Tracker",
-    desc: "Secure expense manager with REST APIs, analytics dashboards, and category-based insights.",
-    tech: ["React Native", "Express", "PostgreSQL", "JWT"],
-    color: "from-blue-500 to-cyan-500"
+    link: "https://github.com/Priyankalj/lms-nativeApp",
+    linkLabel: "View code",
   },
   {
     title: "To-Do App",
     desc: "Task manager with smooth UI, local storage, and optimized interactions.",
     tech: ["React Native", "AsyncStorage", "Context API"],
-    color: "from-green-400 to-emerald-500"
-  }
+    link: "https://github.com/Priyankalj/ToDoList",
+    linkLabel: "View code",
+  },
 ];
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, index }) {
   return (
-    <motion.div
-      whileHover={{
-        y: -8,
-        scale: 1.02,
-      }}
-      transition={{ type: "spring", stiffness: 200 }}
-      className="group relative h-[250px] flex flex-col justify-between border border-gray-800 rounded-2xl p-6 bg-black/40 backdrop-blur-md overflow-hidden"
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -8 }}
+      className="group relative flex flex-col justify-between min-h-[240px] rounded-3xl border border-line bg-surface p-7 shadow-sm hover:shadow-[0_24px_50px_rgba(28,46,36,0.09)] transition"
     >
-      {/* Animated Top Gradient */}
-      <motion.div
-        initial={{ opacity: 0.6 }}
-        whileHover={{ opacity: 1 }}
-        className={`h-1 w-16 group-hover:w-full transition-all duration-500 bg-gradient-to-r ${project.color}`}
-      />
-
-      {/* Glow Effect */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-purple-600/10 blur-2xl"></div>
-
-      {/* Content */}
-      <div className="flex-1 mt-6">
-        <h3 className="text-xl font-semibold mb-2">
+      <div>
+        <div className="h-1 w-10 rounded-full bg-accent group-hover:w-20 transition-all duration-500" />
+        <h3 className="font-display text-2xl font-semibold text-ink mt-5">
           {project.title}
         </h3>
-
-        <p className="text-gray-400 text-sm mb-4">
-          {project.desc}
-        </p>
-
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2">
-          {project.tech.map((tech, i) => (
-            <motion.span
-              key={i}
-              whileHover={{ scale: 1.1 }}
-              className="text-xs px-3 py-1 rounded-full bg-gray-800 text-gray-300"
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
+        <p className="text-muted text-sm mt-3 leading-relaxed">{project.desc}</p>
       </div>
 
-      {/* Buttons */}
-      {/* <div className="flex gap-3 mt-6">
-        <motion.button
-          whileHover={{ y: -2 }}
-          className="flex-1 border border-gray-700 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
-        >
-          Code
-        </motion.button>
+      <div className="mt-6">
+        <div className="flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="text-xs px-3 py-1 rounded-full bg-accent-soft text-accent font-medium"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
 
-        <motion.button
-          whileHover={{ y: -2 }}
-          className="flex-1 border border-gray-700 py-2 rounded-lg text-sm hover:bg-gray-800 transition"
-        >
-          Demo
-        </motion.button>
-      </div> */}
-    </motion.div>
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block mt-5 text-sm font-semibold text-accent hover:text-ink transition"
+          >
+            {project.linkLabel} →
+          </a>
+        )}
+      </div>
+    </motion.article>
   );
 }
 
 function Projects() {
   return (
-    <section id="projects" className="px-6 md:px-16 py-32">
-      
-      {/* Title */}
+    <section id="projects" className="px-6 md:px-16 py-14 md:py-16 bg-page-soft/35">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        transition={{ duration: 0.55 }}
+        className="text-center mb-8 md:mb-10"
       >
-        <h2 className="text-5xl font-bold text-purple-400">
+        <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
           Featured Projects
         </h2>
-        <p className="text-gray-400 mt-4">
-          Showcasing my work in building innovative applications
+        <p className="text-muted mt-4">
+          Selected work across mobile, web, and full-stack products
         </p>
       </motion.div>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-3 gap-6 md:gap-7">
         {projects.map((project, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: i * 0.15
-            }}
-            viewport={{ once: true }}
-          >
-            <ProjectCard project={project} />
-          </motion.div>
+          <ProjectCard key={project.title} project={project} index={i} />
         ))}
       </div>
     </section>

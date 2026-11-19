@@ -1,7 +1,71 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&display=swap");
 
 @import "tailwindcss";
 
+@theme {
+  /* 3 colors only: paper, ink, teal */
+  --color-page: #f7faf9;
+  --color-page-soft: #eef5f3;
+  --color-ink: #14201c;
+  --color-muted: #5c6b66;
+  --color-accent: #0f766e;
+  --color-accent-soft: #d8f3ef;
+  --color-accent-bright: #0d9488;
+  --color-surface: #ffffff;
+  --color-line: #d5e3df;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "Inter", sans-serif;
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-page);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 88% 10%, rgba(15, 118, 110, 0.1), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 8% 85%, rgba(15, 118, 110, 0.06), transparent 50%),
+    linear-gradient(160deg, #fbfcfb 0%, #f3f8f6 50%, #eaf3f0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8px, -12px);
+  }
+}
+
+.animate-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 9s ease-in-out infinite;
 }

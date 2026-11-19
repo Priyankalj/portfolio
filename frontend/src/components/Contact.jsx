@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-// Free key from https://web3forms.com — paste yours below (safe to use in frontend)
 const WEB3FORMS_ACCESS_KEY = "18a378a7-539c-48ee-a3d6-957665219e2a";
 
 function Contact() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -34,7 +32,7 @@ function Contact() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
+          Accept: "application/json",
         },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
@@ -42,8 +40,8 @@ function Contact() {
           from_name: "Portfolio Contact",
           name: form.name,
           email: form.email,
-          message: form.message
-        })
+          message: form.message,
+        }),
       });
 
       const data = await res.json();
@@ -63,60 +61,56 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 md:px-16 py-32">
-      
-      {/* Title */}
-      <div className="text-center mb-20">
-        <h2 className="text-5xl font-bold text-purple-400">
+    <section id="contact" className="px-6 md:px-16 py-14 md:py-16 bg-page-soft/40">
+      <div className="text-center mb-8 md:mb-10">
+        <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
           Get In Touch
         </h2>
-        <p className="text-gray-400 mt-4">
-          Have a project in mind? I'd love to hear from you!
+        <p className="text-muted mt-4">
+          Have a project in mind? I&apos;d love to hear from you.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-10">
-        
-        {/* LEFT PANEL */}
-        <div className="border border-gray-800 rounded-2xl p-8 bg-[#0b0f1a]">
-
-          <h3 className="text-xl font-semibold mb-4">
-            Let's Connect
+      <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-3xl border border-line bg-surface p-8 shadow-sm"
+        >
+          <h3 className="font-display text-2xl font-semibold text-ink mb-3">
+            Let&apos;s Connect
           </h3>
-
-          <p className="text-gray-400 mb-6">
-            Feel free to reach out for opportunities or collaboration.
+          <p className="text-muted mb-7 text-sm leading-relaxed">
+            Reach out for opportunities, collaboration, or just to say hello.
           </p>
 
-          {/* Email */}
-         <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=ljpriyanka7@gmail.com&su=Portfolio%20Inquiry"
-  target="_blank"
-  rel="noreferrer"
-  className="block border border-gray-700 rounded-lg p-4 mb-4 hover:bg-gray-800 transition"
->
-  📧 ljpriyanka7@gmail.com
-</a>
-
-
-
-          {/* LinkedIn */}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ljpriyanka7@gmail.com&su=Portfolio%20Inquiry"
+            target="_blank"
+            rel="noreferrer"
+            className="block rounded-2xl border border-line p-4 mb-3 hover:bg-accent-soft transition text-ink text-sm"
+          >
+            ljpriyanka7@gmail.com
+          </a>
           <a
             href="https://www.linkedin.com/in/priyankalj/"
             target="_blank"
             rel="noreferrer"
-            className="block border border-gray-700 rounded-lg p-4 hover:bg-gray-800 transition"
+            className="block rounded-2xl border border-line p-4 hover:bg-accent-soft transition text-ink text-sm"
           >
-            💼 LinkedIn Profile
+            LinkedIn Profile
           </a>
-        </div>
+        </motion.div>
 
-        {/* RIGHT FORM */}
-        <form
+        <motion.form
           onSubmit={sendEmail}
-          className="border border-gray-800 rounded-2xl p-8 bg-[#0b0f1a]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.08 }}
+          className="rounded-3xl border border-line bg-surface p-8 shadow-sm"
         >
-          {/* Honeypot — leave empty; hides from real users */}
           <input
             type="checkbox"
             name="botcheck"
@@ -125,7 +119,7 @@ function Contact() {
             tabIndex={-1}
             autoComplete="off"
           />
-          
+
           <input
             type="text"
             name="name"
@@ -133,9 +127,8 @@ function Contact() {
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full mb-4 p-3 rounded-lg bg-black border border-gray-700 text-white"
+            className="w-full mb-3 p-3.5 rounded-2xl bg-page border border-line text-ink placeholder:text-muted/70 focus:outline-none focus:border-accent"
           />
-
           <input
             type="email"
             name="email"
@@ -143,9 +136,8 @@ function Contact() {
             value={form.email}
             onChange={handleChange}
             required
-            className="w-full mb-4 p-3 rounded-lg bg-black border border-gray-700 text-white"
+            className="w-full mb-3 p-3.5 rounded-2xl bg-page border border-line text-ink placeholder:text-muted/70 focus:outline-none focus:border-accent"
           />
-
           <textarea
             name="message"
             placeholder="Your message..."
@@ -153,27 +145,27 @@ function Contact() {
             onChange={handleChange}
             required
             rows={4}
-            className="w-full mb-4 p-3 rounded-lg bg-black border border-gray-700 text-white"
+            className="w-full mb-4 p-3.5 rounded-2xl bg-page border border-line text-ink placeholder:text-muted/70 focus:outline-none focus:border-accent"
           />
 
           <motion.button
-            whileTap={{ scale: 0.95 }}
+            whileTap={{ scale: 0.98 }}
             disabled={loading}
-            className="w-full py-3 rounded-lg bg-purple-500 hover:bg-purple-600 transition"
+            className="w-full py-3.5 rounded-full bg-accent text-white font-medium hover:bg-accent-bright transition disabled:opacity-60"
           >
             {loading ? "Sending..." : "Send Message"}
           </motion.button>
 
           {success && (
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-green-400 mt-4 text-sm"
+              className="text-accent mt-4 text-sm font-medium"
             >
-              Message sent successfully 🚀
+              Message sent successfully
             </motion.p>
           )}
-        </form>
+        </motion.form>
       </div>
     </section>
   );
